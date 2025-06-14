@@ -1,9 +1,143 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mousumi Mitra | Portfolio</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f8f9fa, #e8f0ff);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #4a00e0, #8e2de2);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Sections */
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: #4a00e0;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #8e2de2;
+      padding-bottom: 5px;
+    }
+
+    .job {
+      background-color: #ffffff;
+      border-left: 5px solid #4a00e0;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border-radius: 8px;
+    }
+
+    .job h3 {
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .job em {
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    /* Skills */
+    #skills ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    #skills li {
+      background-color: #8e2de2;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+    }
+
+    /* Contact */
+    #contact a {
+      color: #4a00e0;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    #contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #4a00e0;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -18,12 +152,16 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-  </header>  <section id="about">
+  </header>
+
+  <section id="about">
     <h2>About Me</h2>
     <p>
       Over 2 years of experience in team supervision, process improvement, and cross-functional coordination. Skilled in leading teams, meeting deadlines, and maintaining performance in fast-paced environments.
     </p>
-  </section>  <section id="experience">
+  </section>
+
+  <section id="experience">
     <h2>Work Experience</h2>
     <div class="job">
       <h3>Assistant Team Leader – Delhivery Limited</h3>
@@ -50,13 +188,17 @@
         <li>Implement & maintain 5S activities</li>
       </ul>
     </div>
-  </section>  <section id="education">
+  </section>
+
+  <section id="education">
     <h2>Education</h2>
     <ul>
       <li><strong>B.A Honours in Bengali</strong>, Asutosh College, Calcutta University (2018–2021) – 68%</li>
       <li><strong>Higher Secondary</strong>, Kasundia Mahakali Balika Vidyalaya (2016–2018) – 65%</li>
     </ul>
-  </section>  <section id="skills">
+  </section>
+
+  <section id="skills">
     <h2>Skills</h2>
     <ul>
       <li>PGDCA</li>
@@ -65,15 +207,20 @@
       <li>Effective Communication</li>
       <li>Performance Monitoring</li>
       <li>MS Office Suite (Word, Excel, PowerPoint)</li>
-      <li>V Lookup, Pivot Table</li>
+      <li>V Lookup</li>
+      <li>Pivot Table</li>
     </ul>
-  </section>  <section id="contact">
+  </section>
+
+  <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:mmitra144@gmail.com">mmitra144@gmail.com</a></p>
     <p>Phone: +91 9163978522</p>
     <p>Location: Kolkata, India</p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/mousumi-mitra-4b0b2a279" target="_blank">mousumi-mitra-4b0b2a279</a></p>
-  </section>  <footer>
+  </section>
+
+  <footer>
     <p>&copy; 2025 Mousumi Mitra. All Rights Reserved.</p>
   </footer>
 </body>

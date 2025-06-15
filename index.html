@@ -100,25 +100,6 @@
       padding: 50px 20px 60px;
       text-align: center;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      position: relative;
-    }
-
-    .theme-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: white;
-      color: #2575fc;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 25px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .theme-toggle:hover {
-      background: #ddd;
     }
 
     .profile-pic {
@@ -194,7 +175,11 @@
       transform: translateY(-5px);
     }
 
-    .job h3, .edu-card {
+    .edu-card p {
+      color: inherit;
+    }
+
+    .job h3 {
       color: #333;
       margin-bottom: 10px;
     }
@@ -273,7 +258,6 @@
 
   <!-- Header -->
   <header>
-    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
     <img src="profile.jpg" alt="Mousumi Mitra" class="profile-pic" />
     <h1>Mousumi Mitra</h1>
     <p>Experienced Assistant Team Leader</p>
@@ -327,10 +311,10 @@
   <section id="education" data-aos="fade-left">
     <h2>Education</h2>
     <div class="edu-card">
-      <p>B.A Honours in Bengali</strong>, Asutosh College, Calcutta University (2018–2021) – 68%</p>
+      <p><strong>B.A Honours in Bengali</strong>, Asutosh College, Calcutta University (2018–2021) – 68%</p>
     </div>
     <div class="edu-card">
-      <p>Higher Secondary</strong>, Kasundia Mahakali Balika Vidyalaya (2016–2018) – 65%</p>
+      <p><strong>Higher Secondary</strong>, Kasundia Mahakali Balika Vidyalaya (2016–2018) – 65%</p>
     </div>
   </section>
 
@@ -354,14 +338,6 @@
 
   <!-- JavaScript -->
   <script>
-    // Theme toggle
-    function toggleTheme() {
-      const body = document.body;
-      const isDark = body.getAttribute('data-theme') === 'dark';
-      body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-      document.querySelector('.theme-toggle').innerText = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
-    }
-
     // Hide loader after content is loaded
     window.addEventListener("load", () => {
       const loader = document.getElementById("loader");

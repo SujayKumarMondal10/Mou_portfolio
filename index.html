@@ -5,156 +5,369 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mousumi Mitra | Portfolio</title>
   <style>
-    /* Reset & Base */
-    * { margin:0; padding:0; box-sizing:border-box; transition: background 0.3s, color 0.3s; }
-    html { scroll-behavior:smooth; }
-    body { font-family:'Segoe UI', sans-serif; background:#f8f9fa; color:#333; }
-    .dark-mode { background:#1e1e1e; color:#ddd; }
-    .dark-mode header { background:linear-gradient(135deg, #3a0071, #0a1756); }
-    .dark-mode .job, .dark-mode .edu-card, .dark-mode .testimonial, .dark-mode .gallery-item { background:#2a2a2a; }
-    .dark-mode footer { background:#0a1756; }
+    :root {
+      --bg-light: linear-gradient(to right, #fce3ec, #ffe8cc);
+      --bg-dark: #1c1c1c;
+      --text-light: #333;
+      --text-dark: #f5f5f5;
+      --primary: #2575fc;
+      --secondary: #6a11cb;
+    }
 
-    /* Animations */
-    @keyframes fadeInUp { from { opacity:0; transform:translateY(30px);} to {opacity:1;transform:translateY(0);} }
-    .animate { opacity:0; animation:fadeInUp .8s ease forwards; }
+    [data-theme='dark'] {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
 
-    /* Header */
-    header { background:linear-gradient(135deg, #6a11cb, #2575fc); padding:60px 20px 40px; text-align:center; position:relative; }
-    .profile-pic { width:150px;height:150px;border-radius:50%;border:5px solid white;margin-bottom:20px; animation:fadeInUp 1s ease forwards; }
-    header h1 { font-size:3rem; margin-bottom:10px; animation:fadeInUp 1s ease forwards; }
-    header p { font-size:1.2rem; font-style:italic; animation:fadeInUp 1.2s ease forwards; }
-    nav ul { margin-top:20px; display:flex; justify-content:center; gap:15px; animation:fadeInUp 1.4s ease forwards; }
-    nav a { color:white; text-decoration:none; background:rgba(255,255,255,0.15); padding:10px 18px; border-radius:30px; font-weight:bold; }
-    nav a:hover { background:white; color:#2575fc; transform:scale(1.05); }
+    [data-theme='dark'] header {
+      background: linear-gradient(135deg, #1f1f1f, #333);
+      color: white;
+    }
 
-    /* Controls */
-    .controls { position:absolute; top:20px; right:20px; display:flex; gap:10px; }
-    .controls button { padding:8px 12px; border:none; border-radius:20px; cursor:pointer; font-weight:bold; }
-    .controls .cv-btn { background:#ff512f; color:white; }
-    .controls .toggle-btn { background:#ddd; }
+    [data-theme='dark'] section,
+    [data-theme='dark'] .job,
+    [data-theme='dark'] .edu-card {
+      background-color: #2b2b2b;
+      color: var(--text-dark);
+    }
 
-    /* Sections */
-    section { padding:60px 20px; max-width:1000px; margin:0 auto; }
-    h2 { font-size:2.5rem; color:#6a11cb; margin-bottom:30px; text-align:center; border-bottom:4px double #2575fc; }
+    [data-theme='dark'] nav a:hover {
+      background: white;
+      color: #2575fc;
+    }
 
-    /* Cards */
-    .job, .edu-card, .testimonial { background:white; border-left:5px solid #2575fc; padding:25px; margin-bottom:25px; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.08); }
-    .job:hover, .edu-card:hover, .testimonial:hover { transform:scale(1.02); box-shadow:0 10px 24px rgba(0,0,0,0.1); }
-    .testimonial { display:flex; gap:15px; align-items:center; }
-    .testimonial img { width:60px; height:60px; border-radius:50%; }
+    [data-theme='dark'] footer {
+      background-color: #111;
+      color: #aaa;
+    }
 
-    /* Gallery */
-    .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px; }
-    .gallery-item { background:white; border-radius:8px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08); transition:transform .3s; }
-    .gallery-item:hover { transform:scale(1.05); }
-    .gallery-item img { width:100%; display:block; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    /* Skills */
-    #skills ul { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
-    #skills li { background:linear-gradient(to right, #ff512f, #dd2476); color:white; padding:10px 20px; border-radius:25px; }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-light);
+      line-height: 1.6;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    header {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      padding: 50px 20px 60px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: white;
+      color: #2575fc;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: #ddd;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #fff;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 18px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background: white;
+      color: #2575fc;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #6a11cb;
+      border-bottom: 4px double #2575fc;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .job, .edu-card {
+      background: white;
+      border-left: 5px solid #2575fc;
+      padding: 25px;
+      margin-bottom: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .job:hover, .edu-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .job h3, .edu-card strong {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .job em, .edu-card em {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    #skills ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    #skills li {
+      background: linear-gradient(to right, #ff6a00, #ee0979);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    }
 
     /* Contact */
-    form { max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:15px; }
-    form input, form textarea { padding:10px; border:1px solid #ccc; border-radius:6px; }
-    form button { width:150px; padding:10px; border:none; border-radius:6px; background:#2575fc; color:white; font-weight:bold; cursor:pointer; }
-    form button:hover { background:#6a11cb; }
+    #contact p {
+      text-align: center;
+      font-size: 1.1rem;
+    }
 
-    /* Footer */
-    footer { background:#6a11cb; color:white; text-align:center; padding:20px; font-size:0.9rem; }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 600px;
+      margin: 30px auto;
+    }
 
-    /* Responsive */
-    @media (max-width:600px) {
-      header h1 { font-size:2rem; } header p { font-size:1rem; } nav ul { flex-direction:column; }
-      .profile-pic { width:120px;height:120px; }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      background: #2575fc;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .contact-form button:hover {
+      background: #1a5edb;
+    }
+
+    footer {
+      background-color: #6a11cb;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
-<body>
+<body data-theme="light">
   <header>
-    <div class="controls">
-      <a href="Mousumi_Mitra_CV.pdf" download><button class="cv-btn">Download CV</button></a>
-      <button class="toggle-btn" onclick="toggleDarkMode()">Dark Mode</button>
-    </div>
-    <img src="profile.jpg" alt="Mousumi Mitra" class="profile-pic"/>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    <img src="profile.jpg" alt="Mousumi Mitra" class="profile-pic" />
     <h1>Mousumi Mitra</h1>
     <p>Experienced Assistant Team Leader</p>
-    <nav><ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul></nav>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section id="about" class="animate"><h2>About Me</h2>
-    <p>Over 2 years of experience in team supervision, process improvement, and cross-functional coordination...</p>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Over 2 years of experience in team supervision, process improvement, and cross-functional coordination. Skilled in leading teams, meeting deadlines, and maintaining performance in fast-paced environments.
+    </p>
   </section>
 
-  <section id="experience" class="animate"><h2>Work Experience</h2>
-    <div class="job"><h3>Assistant Team Leader – Delhivery Limited</h3><p><em>06/2023 – 11/2023 | Howrah, India</em></p><ul>
-      <li>Handle customer escalations</li><li>Manpower attendance tracking</li><li>Workforce scheduling & leave approvals</li>
-      <li>Investigate and eliminate root causes</li><li>Maintain and improve accurate controls</li><li>Allocate workload among team members</li>
-    </ul></div>
-    <div class="job"><h3>Inbound POC – Tata 1MG</h3><p><em>04/2021 – 06/2023 | Howrah, India</em></p><ul>
-      <li>Team handling & resolving issues</li><li>Inward report update in dashboard</li><li>Stock inward data and inventory management</li>
-      <li>Tracking PV & Put-Away</li><li>Generate reports in Pivot Table & prepare MOM</li><li>Finance validation checks</li><li>Implement & maintain 5S activities</li>
-    </ul></div>
+  <section id="experience">
+    <h2>Work Experience</h2>
+    <div class="job">
+      <h3>Assistant Team Leader – Delhivery Limited</h3>
+      <p><em>06/2023 – 11/2023 | Howrah, India</em></p>
+      <ul>
+        <li>Handle customer escalations</li>
+        <li>Manpower attendance tracking</li>
+        <li>Workforce scheduling & leave approvals</li>
+        <li>Investigate and eliminate root causes</li>
+        <li>Maintain and improve accurate controls</li>
+        <li>Allocate workload among team members</li>
+      </ul>
+    </div>
+    <div class="job">
+      <h3>Inbound POC – Tata 1MG</h3>
+      <p><em>04/2021 – 06/2023 | Howrah, India</em></p>
+      <ul>
+        <li>Team handling & resolving issues</li>
+        <li>Inward report update in dashboard</li>
+        <li>Stock inward data and inventory management</li>
+        <li>Tracking PV & Put-Away</li>
+        <li>Generate reports in Pivot Table & prepare MOM</li>
+        <li>Finance validation checks</li>
+        <li>Implement & maintain 5S activities</li>
+      </ul>
+    </div>
   </section>
 
-  <section id="education" class="animate"><h2>Education</h2>
-    <div class="edu-card"><strong>B.A Honours in Bengali</strong>, Asutosh College, Calcutta University (2018–2021) – 68%</div>
-    <div class="edu-card"><strong>Higher Secondary</strong>, Kasundia Mahakali Balika Vidyalaya (2016–2018) – 65%</div>
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu-card">
+      <p><strong>B.A Honours in Bengali</strong>, Asutosh College, Calcutta University (2018–2021) – 68%</p>
+    </div>
+    <div class="edu-card">
+      <p><strong>Higher Secondary</strong>, Kasundia Mahakali Balika Vidyalaya (2016–2018) – 65%</p>
+    </div>
   </section>
 
-  <section id="skills" class="animate"><h2>Skills</h2>
+  <section id="skills">
+    <h2>Skills</h2>
     <ul>
-      <li>PGDCA</li><li>Task Delegation</li><li>Process Improvement</li><li>Effective Communication</li>
-      <li>Performance Monitoring</li><li>MS Office Suite</li><li>V Lookup</li><li>Pivot Table</li>
+      <li>PGDCA</li>
+      <li>Task Delegation</li>
+      <li>Process Improvement</li>
+      <li>Effective Communication</li>
+      <li>Performance Monitoring</li>
+      <li>MS Office Suite</li>
+      <li>V Lookup</li>
+      <li>Pivot Table</li>
     </ul>
   </section>
 
-  <section id="portfolio" class="animate"><h2>Portfolio</h2>
-    <div class="gallery">
-      <div class="gallery-item"><img src="project1.jpg" alt="Project 1"></div>
-      <div class="gallery-item"><img src="project2.jpg" alt="Project 2"></div>
-      <div class="gallery-item"><img src="project3.jpg" alt="Project 3"></div>
-      <div class="gallery-item"><img src="project4.jpg" alt="Project 4"></div>
-    </div>
-  </section>
-
-  <section id="testimonials" class="animate"><h2>Testimonials</h2>
-    <div class="testimonial">
-      <img src="client1.jpg" alt="Client 1">
-      <div>
-        <p><strong>Jane Doe, Manager:</strong> “Mousumi’s leadership and problem-solving skills were outstanding...”</p>
-      </div>
-    </div>
-    <div class="testimonial">
-      <img src="client2.jpg" alt="Client 2">
-      <div>
-        <p><strong>John Smith, Team Lead:</strong> “A pleasure to work with—always professional and proactive...”</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="animate"><h2>Contact Me</h2>
-    <form onsubmit="alert('Thank you for your message! I will get back to you soon.'); return false;">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Get in touch for opportunities, feedback, or collaboration!</p>
+    <form class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea rows="5" name="message" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
+    <p>Email: <a href="mailto:mmitra144@gmail.com">mmitra144@gmail.com</a></p>
+    <p>Phone: +91 9163978522</p>
+    <p>Location: Kolkata, India</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/mousumi-mitra-4b0b2a279" target="_blank">mousumi-mitra-4b0b2a279</a></p>
   </section>
 
-  <footer>&copy; 2025 Mousumi Mitra. All Rights Reserved.</footer>
+  <footer>
+    <p>&copy; 2025 Mousumi Mitra. All Rights Reserved.</p>
+  </footer>
 
   <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      document.querySelector('.toggle-btn').textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+    function toggleTheme() {
+      const body = document.body;
+      const isDark = body.getAttribute('data-theme') === 'dark';
+      body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      document.querySelector('.theme-toggle').innerText = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
     }
   </script>
 </body>

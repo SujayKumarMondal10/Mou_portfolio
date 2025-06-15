@@ -2,30 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mousumi Mitra | Portfolio</title>
   <style>
-    /* Reset and base */
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #f8f9fa, #e8f0ff);
+      background: linear-gradient(to right, #fce3ec, #ffe8cc);
       color: #333;
       line-height: 1.6;
     }
 
     /* Header */
     header {
-      background: linear-gradient(135deg, #4a00e0, #8e2de2);
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
       color: white;
-      padding: 40px 20px;
+      padding: 50px 20px;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #fff;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     header h1 {
@@ -36,6 +51,7 @@
     header p {
       font-size: 1.2rem;
       margin-bottom: 20px;
+      font-style: italic;
     }
 
     nav ul {
@@ -43,54 +59,60 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 15px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
-      padding: 8px 16px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      transition: background 0.3s ease;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 18px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
     }
 
     nav a:hover {
-      background: rgba(255, 255, 255, 0.3);
+      background: white;
+      color: #2575fc;
     }
 
-    /* Sections */
     section {
-      padding: 40px 20px;
+      padding: 50px 20px;
       max-width: 1000px;
       margin: 0 auto;
     }
 
     h2 {
-      color: #4a00e0;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #8e2de2;
-      padding-bottom: 5px;
+      font-size: 2.5rem;
+      color: #6a11cb;
+      border-bottom: 4px double #2575fc;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+      text-align: center;
     }
 
-    .job {
-      background-color: #ffffff;
-      border-left: 5px solid #4a00e0;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      border-radius: 8px;
+    .job, .edu-card {
+      background: white;
+      border-left: 5px solid #2575fc;
+      padding: 25px;
+      margin-bottom: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
 
-    .job h3 {
-      color: #222;
+    .job:hover, .edu-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .job h3, .edu-card strong {
+      color: #333;
       margin-bottom: 10px;
     }
 
-    .job em {
-      color: #777;
+    .job em, .edu-card em {
+      color: #666;
       font-size: 0.9rem;
     }
 
@@ -107,19 +129,28 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      justify-content: center;
     }
 
     #skills li {
-      background-color: #8e2de2;
+      background: linear-gradient(to right, #ff6a00, #ee0979);
       color: white;
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: 0.95rem;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
     }
 
     /* Contact */
+    #contact p {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
     #contact a {
-      color: #4a00e0;
+      color: #2575fc;
       font-weight: bold;
       text-decoration: none;
     }
@@ -130,17 +161,43 @@
 
     /* Footer */
     footer {
-      background-color: #4a00e0;
+      background-color: #6a11cb;
       color: white;
       text-align: center;
-      padding: 15px;
-      margin-top: 40px;
+      padding: 20px;
       font-size: 0.9rem;
+      margin-top: 60px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
+    <img src="profile.jpg" alt="Mousumi Mitra" class="profile-pic" />
     <h1>Mousumi Mitra</h1>
     <p>Experienced Assistant Team Leader</p>
     <nav>
@@ -192,10 +249,12 @@
 
   <section id="education">
     <h2>Education</h2>
-    <ul>
-      <li><strong>B.A Honours in Bengali</strong>, Asutosh College, Calcutta University (2018–2021) – 68%</li>
-      <li><strong>Higher Secondary</strong>, Kasundia Mahakali Balika Vidyalaya (2016–2018) – 65%</li>
-    </ul>
+    <div class="edu-card">
+      <p><strong>B.A Honours in Bengali</strong>, Asutosh College, Calcutta University (2018–2021) – 68%</p>
+    </div>
+    <div class="edu-card">
+      <p><strong>Higher Secondary</strong>, Kasundia Mahakali Balika Vidyalaya (2016–2018) – 65%</p>
+    </div>
   </section>
 
   <section id="skills">
@@ -206,7 +265,7 @@
       <li>Process Improvement</li>
       <li>Effective Communication</li>
       <li>Performance Monitoring</li>
-      <li>MS Office Suite (Word, Excel, PowerPoint)</li>
+      <li>MS Office Suite</li>
       <li>V Lookup</li>
       <li>Pivot Table</li>
     </ul>
